@@ -76,17 +76,17 @@ def feedback_exists(user_id, wine_id):
         )
         for row in result:
             count_value = row[0]
-        print(f"Row count: {count_value}")
 
     return count_value > 0
 
 
 @app.route("/delete_feedback/<string:user_id>/<int:wine_id>", methods=['DELETE'])
 def delete_feedback(user_id, wine_id):
-    user_token = request.args.get('token')
-    print(f"Test: {user_id}, {user_token} -> {user_token == user_id}")
+    user_token = request.headers.get('Authorization')
+    user_token = user_token.replace('Bearer', '')
+    uid = request.args.get('uid')
 
-    if is_admin(user_token) or (user_id == user_token):
+    if is_admin(user_token) or (uid == user_id):
         database = spanner_client.instance(instance_id).database(database_id)
         with database.batch() as batch:
             key_set = spanner.KeySet(keys=[(user_id, wine_id)])
