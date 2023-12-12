@@ -1,40 +1,23 @@
-# User Management
+# Feedback management
 
-This service is responsible for handling user-related operations within our infrastructure. It provides functionality for user registration, authentication, and user profile management.
+This service is responsible for handling wine feedback operations within our infrastructure. It provides functionality for user to add, delete or update a feedback.
 
-## Requirements
+## Deployment Instructions
 
-Before you begin, ensure you have the following installed:
-- Google Cloud SDK (gcloud CLI): Follow the [installation guide](https://cloud.google.com/sdk/docs/installing) for step-by-step instructions.
-
-## Initial Setup
-
-Once the gcloud is installed, you'll need to authenticate and set up your project:
-
-1. Initialize gcloud:
-
-   ```sh
-   gcloud init
-   ```
-
-2. Follow the on-screen instructions to authenticate with your Google account.
-
-3. Select the project you wish to work on from the list provided by the gcloud tool.
-
-## Deployment
-
-To deploy the User Management service to production, use the following command:
+To deploy the feedback service, start by copying the example application configuration:
 
 ```sh
-gcloud app deploy ./app.yaml
+cp example.app.yml app.yml
 ```
 
-Ensure you are in the correct directory where the `app.yaml` file is located before running this command. This will start the deployment process of your application to Google App Engine.
+Next, you need to update the following variables in the `.env` file:
 
-For an example of a YAML configuration, see [example.app.yml](example.app.yml). You will need to set two lines:
 ```yml
-  SPANNER_INSTANCE: "YOUR_SPANNER_INSTANCE"
-  SPANNER_DATABASE: "YOUR_SPANNER_DATABASE"
+USER_MICROSERVICES: "YOUR-URL-USER-MANAGMENT"
+SPANNER_INSTANCE: "YOUR-SPANNER_INSTANCE"
+SPANNER_DATABASE: "YOUR-WINE-DATABASE"
 ```
 
-For more detailed information on deployment, visit the [App Engine Deployment Guide](https://cloud.google.com/appengine/docs/standard/python3/deploying).
+Replace the placeholders (`YOUR-URL-USER-MANAGMENT`, `YOUR-SPANNER_INSTANCE`, and `YOUR-WINE-DATABASE`) with your actual service URL, Spanner instance name, and Spanner database name, respectively.
+
+For a more comprehensive guide on deployment, including detailed steps and additional configurations, please refer to our [App Engine Deployment Guide](https://github.com/Vintellect/deploy_backend_guide/blob/fd5863fb17d5386cdf16eb43cf58b0c6b8cc571f/Microserivces_guide.md).
