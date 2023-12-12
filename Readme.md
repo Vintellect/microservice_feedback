@@ -13,9 +13,9 @@ cp example.app.yml app.yml
 Next, you need to update the following variables in the `.env` file:
 
 ```yml
-USER_MICROSERVICES: "YOUR-URL-USER-MANAGMENT"
+USER_MICROSERVICES: "YOUR-URL-ADMIN"
 SPANNER_INSTANCE: "YOUR-SPANNER_INSTANCE"
-SPANNER_DATABASE: "YOUR-WINE-DATABASE"
+SPANNER_DATABASE: "YOUR-SPANNER_DATABASE"
 ```
 
 Replace the placeholders (`YOUR-URL-USER-MANAGMENT`, `YOUR-SPANNER_INSTANCE`, and `YOUR-WINE-DATABASE`) with your actual service URL, Spanner instance name, and Spanner database name, respectively.
